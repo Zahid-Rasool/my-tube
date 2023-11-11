@@ -1,0 +1,63 @@
+<template>
+  <div>
+    <div
+      class="colorOption"
+      title="Toggle Profile List"
+      :style="{ background: activeProfile.bgColor, color: activeProfile.textColor }"
+      tabindex="0"
+      role="button"
+      @click="toggleProfileList"
+      @mousedown="handleIconMouseDown"
+      @keydown.enter.prevent="toggleProfileList"
+      @keydown.space.prevent="toggleProfileList"
+    >
+      <div class="initial">{{ activeProfileInitial }}</div>
+    </div>
+    <ft-card
+      v-show="profileListShown"
+      ref="profileList"
+      class="profileList"
+      tabindex="-1"
+      @focusout="handleProfileListFocusOut"
+    >
+      <h3 id="profileListTitle" class="profileListTitle">
+        Profile Select
+        <!-- {{ $(Profile.Profile Select) }} -->
+      </h3>
+      <ft-icon-button
+        class="profileSettings"
+        :icon="['fas', 'sliders-h']"
+        @click="openProfileSettings"
+      />
+      <div class="profileWrapper" role="listbox" aria-labelledby="profileListTitle">
+        <div
+          v-for="(profile, index) in profileList"
+          :id="'profile-' + index"
+          :key="index"
+          class="profile"
+          :aria-labelledby="'profile-' + index + '-name'"
+          aria-selected="false"
+          tabindex="0"
+          role="option"
+          @click="setActiveProfile(profile)"
+          @keydown.enter.prevent="setActiveProfile(profile, $event)"
+        >
+          <div
+            class="colorOption"
+            :style="{ background: profile.bgColor, color: profile.textColor }"
+          >
+            <div class="initial">
+              {{ profileInitials[index] }}
+            </div>
+          </div>
+          <p :id="'profile-' + index + '-name'" class="profileName">
+            {{ profile.name }}
+          </p>
+        </div>
+      </div>
+    </ft-card>
+  </div>
+</template>
+
+<script src="./ft-profile-selector.ts" />
+<style scoped lang="scss" src="./ft-profile-selector.scss" />
