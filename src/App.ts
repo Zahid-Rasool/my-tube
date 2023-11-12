@@ -8,7 +8,7 @@ export default defineComponent({
   },
   data() {
     return {
-      dataready: true
+      dataReady: true
     }
   }
 })

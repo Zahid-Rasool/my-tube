@@ -16,13 +16,20 @@ $themes: $light, $dark, $black, $gray, $dracula, $catm, $pPink, $hPink;
   $new-list: ();
   @each $elem in $list {
     $notfound: true;
-    @each $el in $exclude {@if $elem == $el {$notfound: false;}}
-    @if $notfound == true {$new-list: list.append($new-list, $elem, comma);}
-  }@return $new-list;
+    @each $el in $exclude {
+      @if $elem == $el {
+        $notfound: false;
+      }
+    }
+    @if $notfound == true {
+      $new-list: list.append($new-list, $elem, comma);
+    }
+  }
+  @return $new-list;
 }
 
 #{$themes} {
-  --primary-input-color: rgba(0,0,0,0.5);
+  --primary-input-color: rgba(0, 0, 0, 0.5);
 }
 
 #{cliplist($themes,$gray)} {
@@ -32,7 +39,7 @@ $themes: $light, $dark, $black, $gray, $dracula, $catm, $pPink, $hPink;
 }
 
 #{cliplist($themes,$hPink)} {
-  --primary-input-color: rgba(0, 0, 0, 0.50);
+  --primary-input-color: rgba(0, 0, 0, 0.5);
   --side-nav-hover-text-color: var(--primary-text-color);
 }
 
@@ -42,429 +49,443 @@ $themes: $light, $dark, $black, $gray, $dracula, $catm, $pPink, $hPink;
 }
 
 #{cliplist($themes,$hPink $pPink $catm $dracula)} {
-    --logo-icon: url("../../_icons/iconColorSmall.png");
-    --logo-text: url("../../_icons/textColorSmall.png");
+  --logo-icon: url('../../_icons/iconColorSmall.png');
+  --logo-text: url('../../_icons/textColorSmall.png');
 }
 
 #{cliplist($themes,$light $pPink)} {
-    --primary-shadow-color: rgba(0, 0, 0, 0.75);
+  --primary-shadow-color: rgba(0, 0, 0, 0.75);
 }
 
-$colorList: --primary-text-color,
---secondary-text-color,
---tertiary-text-color,
---primary-shadow-color,
---title-color,
---bg-color,
---favorite-icon-color,
---card-bg-color,
---secondary-card-bg-color,
---scrollbar-color,
---scrollbar-hover-color,
---side-nav-color,
---side-nav-hover-color,
---side-nav-active-color,
---search-bar-color;
+$colorList: --primary-text-color, --secondary-text-color, --tertiary-text-color,
+  --primary-shadow-color, --title-color, --bg-color, --favorite-icon-color, --card-bg-color,
+  --secondary-card-bg-color, --scrollbar-color, --scrollbar-hover-color, --side-nav-color,
+  --side-nav-hover-color, --side-nav-active-color, --search-bar-color;
 
-$valList: #212121, #424242, #757575, rgba(232,232,232,1),
-#3f71c6, #f1f1f1, #ffd600, #fff, #eee, #ccc,
-#bdbdbd, #fff, #e0e0e0, #757575, #f5f5f5;
-#{$light}{
-    @for $i from 1 through list.length($colorList){
-        #{list.nth($colorList,$i)} : list.nth($valList, $i )
-    }
+$valList: #212121, #424242, #757575, rgba(232, 232, 232, 1), #3f71c6, #f1f1f1, #ffd600, #fff, #eee,
+  #ccc, #bdbdbd, #fff, #e0e0e0, #757575, #f5f5f5;
+#{$light} {
+  @for $i from 1 through list.length($colorList) {
+    #{list.nth($colorList,$i)}: list.nth($valList, $i);
+  }
 }
 
 $newColorList: cliplist($colorList, --primary-shadow-color);
-$valList: #eee, #ddd, #999, #eee,#212121, #ffea00,
-#303030, rgba(0,0,0,0.75), #414141, #757575, #262626,
-#212121, #303030, #262626;
-#{$dark}{
-    @for $i from 1 through list.length($newColorList){
-        #{list.nth($newColorList,$i)} : list.nth($valList, $i )
-    }
+$valList: #eee, #ddd, #999, #eee, #212121, #ffea00, #303030, rgba(0, 0, 0, 0.75), #414141, #757575,
+  #262626, #212121, #303030, #262626;
+#{$dark} {
+  @for $i from 1 through list.length($newColorList) {
+    #{list.nth($newColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
-$valList: #eee, #ddd, #eee, #eee,#000, #ffea00,
-#000, rgba(0,0,0,0.75), #515151, #424242, #0f0f0f,
-#212121, #303030, #262626;
-#{$black}{
-    @for $i from 1 through list.length($newColorList){
-        #{list.nth($newColorList,$i)} : list.nth($valList, $i )
-    }
+$valList: #eee, #ddd, #eee, #eee, #000, #ffea00, #000, rgba(0, 0, 0, 0.75), #515151, #424242,
+  #0f0f0f, #212121, #303030, #262626;
+#{$black} {
+  @for $i from 1 through list.length($newColorList) {
+    #{list.nth($newColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
-$valList: #eee, #ddd, #eee, #eee,#000, #ffea00,
-#000, rgba(0,0,0,0.75), #515151, #424242, #0f0f0f,
-#212121, #303030, #262626;
-#{$black}{
-    @for $i from 1 through list.length($newColorList){
-        #{list.nth($newColorList,$i)} : list.nth($valList, $i )
-    }
+$valList: #eee, #ddd, #eee, #eee, #000, #ffea00, #000, rgba(0, 0, 0, 0.75), #515151, #424242,
+  #0f0f0f, #212121, #303030, #262626;
+#{$black} {
+  @for $i from 1 through list.length($newColorList) {
+    #{list.nth($newColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
-$grayColorList: cliplist($newColorList, --favorite-icon-color --scrollbar-color --scrollbar-hover-color);
-$valList: #eee, #e0e0e0, #f5f5f5, #eee,#212121, #303030,
-rgba(0,0,0,0.75), #262626,#212121, #303030, #212121;
-#{$gray}{
-    @for $i from 1 through list.length($grayColorList){
-        #{list.nth($grayColorList,$i)} : list.nth($valList, $i )
-    }
+$grayColorList: cliplist(
+  $newColorList,
+  --favorite-icon-color --scrollbar-color --scrollbar-hover-color
+);
+$valList: #eee, #e0e0e0, #f5f5f5, #eee, #212121, #303030, rgba(0, 0, 0, 0.75), #262626, #212121,
+  #303030, #212121;
+#{$gray} {
+  @for $i from 1 through list.length($grayColorList) {
+    #{list.nth($grayColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
 $draculaColorList: list.join($newColorList, --logo-icon --logo-text);
-$valList: #f8f8f2, #c6cee6, #e5e8f3, #bd93f9,#282A36, #f1fa8c,
-#33353f,#282a36, #44475a,#3d4051, #44475a,#57596b, #3d4051, #3e3f4a,
-url("../../_icons/iconDraculaLightSmall.png"), url("../../_icons/textDraculaLightSmall.png");
-#{$dracula}{
-    @for $i from 1 through list.length($draculaColorList){
-        #{list.nth($draculaColorList,$i)} : list.nth($valList, $i )
-    }
+$valList: #f8f8f2, #c6cee6, #e5e8f3, #bd93f9, #282a36, #f1fa8c, #33353f, #282a36, #44475a, #3d4051,
+  #44475a, #57596b, #3d4051, #3e3f4a, url('../../_icons/iconDraculaLightSmall.png'),
+  url('../../_icons/textDraculaLightSmall.png');
+#{$dracula} {
+  @for $i from 1 through list.length($draculaColorList) {
+    #{list.nth($draculaColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
 $catmColorList: $draculaColorList;
-$valList: #cdd6f4, #bac2de, #a6adc8, var(--accent-color),#1e1e2e, #f9e2af,
-#181825,#1e1e2e, #313244,#3d4051, #181825,#11111b, #11111b, #313244,
-url("../../_icons/iconCatppuccinMochaLightSmall.png"),
-url("../../_icons/textCatppuccinMochaLightSmall.png");
-#{$catm}{
-    @for $i from 1 through list.length($catmColorList){
-        #{list.nth($catmColorList,$i)} : list.nth($valList, $i )
-    }
+$valList: #cdd6f4, #bac2de, #a6adc8, var(--accent-color), #1e1e2e, #f9e2af, #181825, #1e1e2e,
+  #313244, #3d4051, #181825, #11111b, #11111b, #313244,
+  url('../../_icons/iconCatppuccinMochaLightSmall.png'),
+  url('../../_icons/textCatppuccinMochaLightSmall.png');
+#{$catm} {
+  @for $i from 1 through list.length($catmColorList) {
+    #{list.nth($catmColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
-@function insertList($list, $index, $value){
+@function insertList($list, $index, $value) {
   $newList: list.set-nth($list, $index, $value);
-  @for $i from $index+1 through list.length($list){
-    $newList: list.set-nth($newList,$i,list.nth($list,($i)-1))
+  @for $i from $index + 1 through list.length($list) {
+    $newList: list.set-nth($newList, $i, list.nth($list, ($i)-1));
   }
-  $newList: list.append($newList,list.nth($list,list.length($list)));
+  $newList: list.append($newList, list.nth($list, list.length($list)));
   @return $newList;
 }
 $pPinkColorList: list.join($colorList, --logo-icon --logo-text);
-$pPinkColorList: insertList($pPinkColorList,12,--scrollbar-text-hover-color);
-$pPinkColorList: insertList($pPinkColorList,16,--side-nav-active-text-color);
-$valList: #1f002b, #361836, #5a285a, rgba(255,240,240,0.5),#185eb4, #ffeadd,
-#760278,#ffd1dc, #fff,#f5c8d3, #760278,var(--scrollbar-color), #ffd1dc, #cef4f1,
-#3124e7, #fff, #fff0dd, url("../../_icons/iconBlackSmall.png"),
-url("../../_icons/textBlackSmall.png");
-#{$pPink}{
-    @for $i from 1 through list.length($pPinkColorList){
-        #{list.nth($pPinkColorList,$i)} : list.nth($valList, $i )
-    }
+$pPinkColorList: insertList($pPinkColorList, 12, --scrollbar-text-hover-color);
+$pPinkColorList: insertList($pPinkColorList, 16, --side-nav-active-text-color);
+$valList: #1f002b, #361836, #5a285a, rgba(255, 240, 240, 0.5), #185eb4, #ffeadd, #760278, #ffd1dc,
+  #fff, #f5c8d3, #760278, var(--scrollbar-color), #ffd1dc, #cef4f1, #3124e7, #fff, #fff0dd,
+  url('../../_icons/iconBlackSmall.png'), url('../../_icons/textBlackSmall.png');
+#{$pPink} {
+  @for $i from 1 through list.length($pPinkColorList) {
+    #{list.nth($pPinkColorList,$i)}: list.nth($valList, $i);
+  }
 }
 
 $hPinkColorList: $pPinkColorList;
-$valList: #fff, #fff, #fff, #000, #ff008a, #ffea00,#de1c85,rgba(0,0,0,0.75),
-#fff,#c0f6ff, #000,#ee1e90, #fff, #000,#959595, #000, #9c2d5d,
- url("../../_icons/iconWhiteSmall.png"), url("../../_icons/textWhiteSmall.png");
-#{$hPink}{
-    @for $i from 1 through list.length($hPinkColorList){
-        #{list.nth($hPinkColorList,$i)} : list.nth($valList, $i )
-    }
-    --primary-color: #000 !important;
-    --primary-hover-color: #000 !important;
-    --primary-active-color: #000 !important;
-    --text-with-main-color: #fff !important;
-    --text-with-accent-color: #fff !important;
-    --accent-color: #000 !important;
-    --accent-hover-color: #808080 !important;
-    --accent-active-color: #6a739a !important;
-    --accent-light-color: #000 !important;
-    --accent-visited-color: #000 !important;
-    --accent-color-opacity1: rgba(0,0,0,0.04) !important;
-    --accent-color-opacity2: rgba(0,0,0,0.12) !important;
-    --accent-color-opacity3: rgba(255,255,255,0.16) !important;
-    --accent-color-opacity4: rgba(255,255,255,0.24) !important;
-    a:not(:hover), a.navOption:hover, *:not(:hover){
-        text-decoration: none;
-    }
-    a:hover{
-        text-decoration: underline;
-    }
+$valList: #fff, #fff, #fff, #000, #ff008a, #ffea00, #de1c85, rgba(0, 0, 0, 0.75), #fff, #c0f6ff,
+  #000, #ee1e90, #fff, #000, #959595, #000, #9c2d5d, url('../../_icons/iconWhiteSmall.png'),
+  url('../../_icons/textWhiteSmall.png');
+#{$hPink} {
+  @for $i from 1 through list.length($hPinkColorList) {
+    #{list.nth($hPinkColorList,$i)}: list.nth($valList, $i);
+  }
+  --primary-color: #000 !important;
+  --primary-hover-color: #000 !important;
+  --primary-active-color: #000 !important;
+  --text-with-main-color: #fff !important;
+  --text-with-accent-color: #fff !important;
+  --accent-color: #000 !important;
+  --accent-hover-color: #808080 !important;
+  --accent-active-color: #6a739a !important;
+  --accent-light-color: #000 !important;
+  --accent-visited-color: #000 !important;
+  --accent-color-opacity1: rgba(0, 0, 0, 0.04) !important;
+  --accent-color-opacity2: rgba(0, 0, 0, 0.12) !important;
+  --accent-color-opacity3: rgba(255, 255, 255, 0.16) !important;
+  --accent-color-opacity4: rgba(255, 255, 255, 0.24) !important;
+  a:not(:hover),
+  a.navOption:hover,
+  *:not(:hover) {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
-@mixin colors1($sel, $col, $url){
-    #{$sel}{
-        --text-with-main-color: #{$col};
-        --logo-icon-bar-color: url('../../_icons/icon#{$url}Small.png');
-        --logo-text-bar-color: url('../../_icons/text#{$url}Small.png');
-    }
+@mixin colors1($sel, $col, $url) {
+  #{$sel} {
+    --text-with-main-color: #{$col};
+    --logo-icon-bar-color: url('../../_icons/icon#{$url}Small.png');
+    --logo-text-bar-color: url('../../_icons/text#{$url}Small.png');
+  }
 }
 
-$colorList1: 'Red','Pink','Purple','DeepPurple','Indigo','Blue','LightBlue','Cyan','Teal','Green';
-$sel: selector.append('.main',#{$colorList1});
+$colorList1: 'Red', 'Pink', 'Purple', 'DeepPurple', 'Indigo', 'Blue', 'LightBlue', 'Cyan', 'Teal',
+  'Green';
+$sel: selector.append('.main', #{$colorList1});
 @include colors1($sel, #fff, 'White');
-$colorList2: 'LightGreen','Lime','Yellow','Amber','Orange','DeepOrange';
-$sel: selector.append('.main',#{$colorList2});
+$colorList2: 'LightGreen', 'Lime', 'Yellow', 'Amber', 'Orange', 'DeepOrange';
+$sel: selector.append('.main', #{$colorList2});
 @include colors1($sel, #000, 'Black');
 
-@each $color, $col1, $col2, $col3 in (
-    'Red' #f44336 #e53935 #c62828,
-    'Pink' #e91363 #d81b60 #ad1457,
-    'Purple' #9c27b0 #8324aa #6a1b9a,
-    'DeepPurple' #673ab7 #5e35b1 #4527a0,
-    'Indigo' #3f51b5 #3949ab #283593,
-    'Blue' #2196f3 #1e88e5 #1565c0,
-    'LightBlue' #03a9f4 #039be5 #0277bd,
-    'Cyan' #00bcd4 #00acc1 #00838f,
-    'Teal' #009688 #00897b #00695c,
-    'Green' #4caf50 #43a047 #2e7d32,
-    'LightGreen' #8bc34a #7cb342 #558b2f,
-    'Lime' #cddc39 #c0ca33 #9e9d24,
-    'Yellow' #ffeb3b #fdd835 #f9a825,
-    'Amber' #ffc107 #ffb300 #ff8f00,
-    'Orange' #ff9800 #fb8c00 #ef6c00,
-    'DeepOrange' #ff5722 #f4511e #d84315
-){
-    .main#{$color}{
-        --primary-color: #{$col1};
-        --primary-hover-color: #{$col2};
-        --primary-active-color: #{$col3};
-    }
+@each $color, $col1, $col2,
+  $col3
+    in (
+      'Red' #f44336 #e53935 #c62828,
+      'Pink' #e91363 #d81b60 #ad1457,
+      'Purple' #9c27b0 #8324aa #6a1b9a,
+      'DeepPurple' #673ab7 #5e35b1 #4527a0,
+      'Indigo' #3f51b5 #3949ab #283593,
+      'Blue' #2196f3 #1e88e5 #1565c0,
+      'LightBlue' #03a9f4 #039be5 #0277bd,
+      'Cyan' #00bcd4 #00acc1 #00838f,
+      'Teal' #009688 #00897b #00695c,
+      'Green' #4caf50 #43a047 #2e7d32,
+      'LightGreen' #8bc34a #7cb342 #558b2f,
+      'Lime' #cddc39 #c0ca33 #9e9d24,
+      'Yellow' #ffeb3b #fdd835 #f9a825,
+      'Amber' #ffc107 #ffb300 #ff8f00,
+      'Orange' #ff9800 #fb8c00 #ef6c00,
+      'DeepOrange' #ff5722 #f4511e #d84315
+    )
+{
+  .main#{$color} {
+    --primary-color: #{$col1};
+    --primary-hover-color: #{$col2};
+    --primary-active-color: #{$col3};
+  }
 }
 
-$colorList3: 'Cyan','Green','Orange','Yellow';
-$sel: selector.append('.mainDracula',#{$colorList3});
+$colorList3: 'Cyan', 'Green', 'Orange', 'Yellow';
+$sel: selector.append('.mainDracula', #{$colorList3});
 @include colors1($sel, #282a36, 'DraculaDark');
-$colorList4: 'Pink','Purple','Red';
-$sel: selector.append('.mainDracula',#{$colorList2});
+$colorList4: 'Pink', 'Purple', 'Red';
+$sel: selector.append('.mainDracula', #{$colorList2});
 @include colors1($sel, #f8f8f2, 'DraculaLight');
 
-@each $color, $col1, $col2, $col3 in (
-    'Cyan' #8be9fd #97ebfd #7dd2e4,
-    'Green' #50fa7b #62fb88 #48e16f,
-    'Orange' #ffb86c #ffbf7b #e6a661,
-    'Pink' #ff79c6 #ff86cc #e66db2,
-    'Purple' #bd93f9 #c49efa #aa84e0,
-    'Red' #f55 #f66 #e64d4d,
-    'Yellow' #f1fa8c #f2fb98 #d9e173
-){
-    .main#{$color}{
-        --primary-color: #{$col1};
-        --primary-hover-color: #{$col2};
-        --primary-active-color: #{$col3};
-    }
+@each $color, $col1, $col2,
+  $col3
+    in (
+      'Cyan' #8be9fd #97ebfd #7dd2e4,
+      'Green' #50fa7b #62fb88 #48e16f,
+      'Orange' #ffb86c #ffbf7b #e6a661,
+      'Pink' #ff79c6 #ff86cc #e66db2,
+      'Purple' #bd93f9 #c49efa #aa84e0,
+      'Red' #f55 #f66 #e64d4d,
+      'Yellow' #f1fa8c #f2fb98 #d9e173
+    )
+{
+  .main#{$color} {
+    --primary-color: #{$col1};
+    --primary-hover-color: #{$col2};
+    --primary-active-color: #{$col3};
+  }
 }
 
-$colorList3: 'Cyan','Green','Orange','Yellow';
-$sel: selector.append('.mainDracula',#{$colorList3});
+$colorList3: 'Cyan', 'Green', 'Orange', 'Yellow';
+$sel: selector.append('.mainDracula', #{$colorList3});
 @include colors1($sel, #282a36, 'DraculaDark');
-$colorList4: 'Pink','Purple','Red';
-$sel: selector.append('.mainDracula',#{$colorList4});
+$colorList4: 'Pink', 'Purple', 'Red';
+$sel: selector.append('.mainDracula', #{$colorList4});
 @include colors1($sel, #f8f8f2, 'DraculaLight');
 
-@each $color, $col1, $col2, $col3 in (
-    'Cyan' #8be9fd #97ebfd #7dd2e4,
-    'Green' #50fa7b #62fb88 #48e16f,
-    'Orange' #ffb86c #ffbf7b #e6a661,
-    'Pink' #ff79c6 #ff86cc #e66db2,
-    'Purple' #bd93f9 #c49efa #aa84e0,
-    'Red' #f55 #f66 #e64d4d,
-    'Yellow' #f1fa8c #f2fb98 #d9e173
-){
-    .mainDraculla#{$color}{
-        --primary-color: #{$col1};
-        --primary-hover-color: #{$col2};
-        --primary-active-color: #{$col3};
-    }
+@each $color, $col1, $col2,
+  $col3
+    in (
+      'Cyan' #8be9fd #97ebfd #7dd2e4,
+      'Green' #50fa7b #62fb88 #48e16f,
+      'Orange' #ffb86c #ffbf7b #e6a661,
+      'Pink' #ff79c6 #ff86cc #e66db2,
+      'Purple' #bd93f9 #c49efa #aa84e0,
+      'Red' #f55 #f66 #e64d4d,
+      'Yellow' #f1fa8c #f2fb98 #d9e173
+    )
+{
+  .mainDraculla#{$color} {
+    --primary-color: #{$col1};
+    --primary-hover-color: #{$col2};
+    --primary-active-color: #{$col3};
+  }
 }
 
-$colorList5: 'Rosewater','Flamingo','Pink','Mauve','Red','Maroon','Peach','Yellow',
-'Green','Teal','Sky','Sapphire','Blue','Lavender';
-$sel: selector.append('.mainCatppuccinMocha',#{$colorList5});
+$colorList5: 'Rosewater', 'Flamingo', 'Pink', 'Mauve', 'Red', 'Maroon', 'Peach', 'Yellow', 'Green',
+  'Teal', 'Sky', 'Sapphire', 'Blue', 'Lavender';
+$sel: selector.append('.mainCatppuccinMocha', #{$colorList5});
 @include colors1($sel, #1e1e2e, 'CatppuccinMochaDark');
 
-@each $color, $col1, $col2, $col3 in (
-    'Rosewater' #f5e0dc #fceeec #e1c8c3,
-    'Flamingo' #f2cdcd #f2e1e1 #ddb7b7,
-    'Pink' #f5c2e7 #f3d2ea #dca3cd,
-    'Mauve' #cba6f7 #d4b7f8 #b38fdf,
-    'Red' #f38ba8 #f0a4b9 #de7693,
-    'Maroon' #eba0ac #eabbc3 #d68895,
-    'Peach' #fab387 #f7c7a9 #e1996d,
-    'Yellow' #f9e2af #feeecd #dec48d,
-    'Green' #a6e3a1 #bfebbb #86c780,
-    'Teal' #94e2d5 #aceae0 #6fc5b7,
-    'Sky' #89dceb #a3e4f0 #68bcca,
-    'Sapphire' #74c7ec #93d1ed #59a9cf,
-    'Blue' #89b4fa #a6c8ff #6593df,
-    'Lavender' #b4befe #c9d0ff #8d98e4
-){
-    .mainCatppuccinMocha#{$color}{
-        --primary-color: #{$col1};
-        --primary-hover-color: #{$col2};
-        --primary-active-color: #{$col3};
-    }
+@each $color, $col1, $col2,
+  $col3
+    in (
+      'Rosewater' #f5e0dc #fceeec #e1c8c3,
+      'Flamingo' #f2cdcd #f2e1e1 #ddb7b7,
+      'Pink' #f5c2e7 #f3d2ea #dca3cd,
+      'Mauve' #cba6f7 #d4b7f8 #b38fdf,
+      'Red' #f38ba8 #f0a4b9 #de7693,
+      'Maroon' #eba0ac #eabbc3 #d68895,
+      'Peach' #fab387 #f7c7a9 #e1996d,
+      'Yellow' #f9e2af #feeecd #dec48d,
+      'Green' #a6e3a1 #bfebbb #86c780,
+      'Teal' #94e2d5 #aceae0 #6fc5b7,
+      'Sky' #89dceb #a3e4f0 #68bcca,
+      'Sapphire' #74c7ec #93d1ed #59a9cf,
+      'Blue' #89b4fa #a6c8ff #6593df,
+      'Lavender' #b4befe #c9d0ff #8d98e4
+    )
+{
+  .mainCatppuccinMocha#{$color} {
+    --primary-color: #{$col1};
+    --primary-hover-color: #{$col2};
+    --primary-active-color: #{$col3};
+  }
 }
 
-@mixin colors2($sel, $col){
-    #{$sel}{
-        --text-with-accent-color: #{$col};
-    }
+@mixin colors2($sel, $col) {
+  #{$sel} {
+    --text-with-accent-color: #{$col};
+  }
 }
 
-$sel: selector.append('.sec',#{$colorList1});
+$sel: selector.append('.sec', #{$colorList1});
 @include colors2($sel, #fff);
-$sel: selector.append('.sec',#{$colorList2});
+$sel: selector.append('.sec', #{$colorList2});
 @include colors2($sel, #000);
 
-@each $color, $col1, $col2, $col3, $col4, $col5, $col6, $col7, $col8 in (
-    'Red' #f44336 #e53935 #c62828 #ef9a9a #b71c1c 244 67 55,
-    'Pink' #e91363 #d81b60 #ad1457 #f48fb1 #880e4f 233 30 99,
-    'Purple' #9c27b0 #8324aa #6a1b9a #ce93d8 #4a148c 156 39 176,
-    'DeepPurple' #673ab7 #5e35b1 #4527a0 #b39ddb #311b92 103 58 183,
-    'Indigo' #3f51b5 #3949ab #283593 #9fa8da #1a237e 63 81 181,
-    'Blue' #2196f3 #1e88e5 #1565c0 #90caf9 #0d47a1 33 150 243,
-    'LightBlue' #03a9f4 #039be5 #0277bd #81d4fa #01579b 3 169 244,
-    'Cyan' #00bcd4 #00acc1 #00838f #80deea #006064 0 188 212,
-    'Teal' #009688 #00897b #00695c #80cbc4 #004d40 0 150 136,
-    'Green' #4caf50 #43a047 #2e7d32 #a5d6a7 #1b5e20 76 175 80,
-    'LightGreen' #8bc34a #7cb342 #558b2f #c5e1a5 #33691e 139 195 74,
-    'Lime' #cddc39 #c0ca33 #9e9d24 #e6ee9c #827717 205 220 57,
-    'Yellow' #ffeb3b #fdd835 #f9a825 #fff59d #f57f17 255 235 59,
-    'Amber' #ffc107 #ffb300 #ff8f00 #ffe082 #ff6f00 255 193 7,
-    'Orange' #ff9800 #fb8c00 #ef6c00 #ffcc80 #e65100 255 152 0,
-    'DeepOrange' #ff5722 #f4511e #d84315 #ffab91 #bf360c 255 87 34
-){
-    .sec#{$color}{
-        --accent-color: #{$col1};
-        --accent-hover-color: #{$col2};
-        --accent-active-color: #{$col3};
-        --accent-light-color: #{$col4};
-        --accent-visited-color: #{$col5};
-        --accent-color-opacity1: rgba(#{$col6},#{$col7},#{$col8},0.04);
-        --accent-color-opacity2: rgba(#{$col6},#{$col7},#{$col8},0.12);
-        --accent-color-opacity3: rgba(#{$col6},#{$col7},#{$col8},0.16);
-        --accent-color-opacity4: rgba(#{$col6},#{$col7},#{$col8},0.24);
-    }
+@each $color, $col1, $col2, $col3, $col4, $col5, $col6, $col7,
+  $col8
+    in (
+      'Red' #f44336 #e53935 #c62828 #ef9a9a #b71c1c 244 67 55,
+      'Pink' #e91363 #d81b60 #ad1457 #f48fb1 #880e4f 233 30 99,
+      'Purple' #9c27b0 #8324aa #6a1b9a #ce93d8 #4a148c 156 39 176,
+      'DeepPurple' #673ab7 #5e35b1 #4527a0 #b39ddb #311b92 103 58 183,
+      'Indigo' #3f51b5 #3949ab #283593 #9fa8da #1a237e 63 81 181,
+      'Blue' #2196f3 #1e88e5 #1565c0 #90caf9 #0d47a1 33 150 243,
+      'LightBlue' #03a9f4 #039be5 #0277bd #81d4fa #01579b 3 169 244,
+      'Cyan' #00bcd4 #00acc1 #00838f #80deea #006064 0 188 212,
+      'Teal' #009688 #00897b #00695c #80cbc4 #004d40 0 150 136,
+      'Green' #4caf50 #43a047 #2e7d32 #a5d6a7 #1b5e20 76 175 80,
+      'LightGreen' #8bc34a #7cb342 #558b2f #c5e1a5 #33691e 139 195 74,
+      'Lime' #cddc39 #c0ca33 #9e9d24 #e6ee9c #827717 205 220 57,
+      'Yellow' #ffeb3b #fdd835 #f9a825 #fff59d #f57f17 255 235 59,
+      'Amber' #ffc107 #ffb300 #ff8f00 #ffe082 #ff6f00 255 193 7,
+      'Orange' #ff9800 #fb8c00 #ef6c00 #ffcc80 #e65100 255 152 0,
+      'DeepOrange' #ff5722 #f4511e #d84315 #ffab91 #bf360c 255 87 34
+    )
+{
+  .sec#{$color} {
+    --accent-color: #{$col1};
+    --accent-hover-color: #{$col2};
+    --accent-active-color: #{$col3};
+    --accent-light-color: #{$col4};
+    --accent-visited-color: #{$col5};
+    --accent-color-opacity1: rgba(#{$col6}, #{$col7}, #{$col8}, 0.04);
+    --accent-color-opacity2: rgba(#{$col6}, #{$col7}, #{$col8}, 0.12);
+    --accent-color-opacity3: rgba(#{$col6}, #{$col7}, #{$col8}, 0.16);
+    --accent-color-opacity4: rgba(#{$col6}, #{$col7}, #{$col8}, 0.24);
+  }
 }
 
-$sel: selector.append('.secDracula',#{$colorList3});
+$sel: selector.append('.secDracula', #{$colorList3});
 @include colors2($sel, #212121);
-$sel: selector.append('.secDracula',#{$colorList4});
+$sel: selector.append('.secDracula', #{$colorList4});
 @include colors2($sel, #f8f8f2);
 
-$sel: list.join(selector.append('.secDracula',#{$colorList3}),
-selector.append('.secDracula',#{$colorList4}));
-#{$sel}{
-    --accent-color-opacity1: rgba(98,114,164,0.04);
-    --accent-color-opacity2: rgba(98,114,164,0.12);
-    --accent-color-opacity3: rgba(98,114,164,0.16);
-    --accent-color-opacity4: rgba(98,114,164,0.24);
+$sel: list.join(
+  selector.append('.secDracula', #{$colorList3}),
+  selector.append('.secDracula', #{$colorList4})
+);
+#{$sel} {
+  --accent-color-opacity1: rgba(98, 114, 164, 0.04);
+  --accent-color-opacity2: rgba(98, 114, 164, 0.12);
+  --accent-color-opacity3: rgba(98, 114, 164, 0.16);
+  --accent-color-opacity4: rgba(98, 114, 164, 0.24);
 }
 
-@each $color, $col1, $col2, $col3, $col4, $col5 in (
-    'Cyan' #8be9fd #97ebfd #7dd2e4 #a2edfd #6fbaca,
-    'Green' #50fa7b #62fb88 #48e16f #73fb95 #40c862, 
-    'Orange' #ffb86c #ffbf7b #e6a661 #ffc689 #cc9356,
-    'Pink' #ff79c6 #ff86cc #e66db2 #ff94d1 #cc619e,
-    'Purple' #bd93f9 #c49efa #aa84e0 #caa9fa #9776c7,
-    'Red' #f55 #f66 #e64d4d #f77 #c44,
-    'Yellow' #f1fa8c #f2fb98 #d9e173 #f4fba3 #c1c870
-){
-    .secDraculla#{$color}{
-        --accent-color: #{$col1};
-        --accent-hover-color: #{$col2};
-        --accent-active-color: #{$col3};
-        --accent-light-color: #{$col4};
-        --accent-visited-color: #{$col5};
-    }
+@each $color, $col1, $col2, $col3, $col4,
+  $col5
+    in (
+      'Cyan' #8be9fd #97ebfd #7dd2e4 #a2edfd #6fbaca,
+      'Green' #50fa7b #62fb88 #48e16f #73fb95 #40c862,
+      'Orange' #ffb86c #ffbf7b #e6a661 #ffc689 #cc9356,
+      'Pink' #ff79c6 #ff86cc #e66db2 #ff94d1 #cc619e,
+      'Purple' #bd93f9 #c49efa #aa84e0 #caa9fa #9776c7,
+      'Red' #f55 #f66 #e64d4d #f77 #c44,
+      'Yellow' #f1fa8c #f2fb98 #d9e173 #f4fba3 #c1c870
+    )
+{
+  .secDraculla#{$color} {
+    --accent-color: #{$col1};
+    --accent-hover-color: #{$col2};
+    --accent-active-color: #{$col3};
+    --accent-light-color: #{$col4};
+    --accent-visited-color: #{$col5};
+  }
 }
 
-$sel: selector.append('.secCatppuccinMocha',#{$colorList5});
+$sel: selector.append('.secCatppuccinMocha', #{$colorList5});
 @include colors2($sel, #1e1e2e);
 
-@each $color, $col1, $col2, $col3, $col4, $col5, $col6, $col7, $col8 in (
-    'Rosewater' #f5e0dc #fceeec #e1c8c3 #f8eae7 #d3a197 245 224 220,
-    'Flamingo' #f2cdcd #f2e1e1 #ddb7b7 #f7dfdf #cf9898 242 205 205,
-    'Pink' #f5c2e7 #f3d2ea #dca3cd #f4dbed #d28fc0 245 194 231,
-    'Mauve' #cba6f7 #d4b7f8 #b38fdf #d6b9f9 #a171da 203 166 247,
-    'Red' #f38ba8 #f0a4b9 #de7693 #f5a3ba #d56c89 243 139 168,
-    'Maroon' #eba0ac #eabbc3 #d68895 #f0b7c0 #c86a79 235 160 172,
-    'Peach' #fab387 #f7c7a9 #e1996d #fbc4a2 #d78a5b 250 179 135,
-    'Yellow' #f9e2af #feeecd #dec48d #fbeccb #d5b05d 249 226 175,
-    'Green' #a6e3a1 #bfebbb #86c780 #bceab8 #6ed166 166 227 161,
-    'Teal' #94e2d5 #aceae0 #6fc5b7 #afe9df #5cccb9 148 226 213,
-    'Sky' #89dceb #a3e4f0 #68bcca #9fe3ef #64c2d3 137 220 235,
-    'Sapphire' #74c7ec #93d1ed #59a9cf #93d4f0 #6ab6d7 116 199 236,
-    'Blue' #89b4fa #a6c8ff #6593df #a7c7fb #739cdd 137 220 235,
-    'Lavender' #b4befe #c9d0ff #8d98e4 #d2d8fe #96a1e9 180 190 254
-){
-    .secCatppuccinMocha#{$color}{
-        --accent-color: #{$col1};
-        --accent-hover-color: #{$col2};
-        --accent-active-color: #{$col3};
-        --accent-light-color: #{$col4};
-        --accent-visited-color: #{$col5};
-        --accent-color-opacity1: rgba(#{$col6},#{$col7},#{$col8},0.04);
-        --accent-color-opacity2: rgba(#{$col6},#{$col7},#{$col8},0.12);
-        --accent-color-opacity3: rgba(#{$col6},#{$col7},#{$col8},0.16);
-        --accent-color-opacity4: rgba(#{$col6},#{$col7},#{$col8},0.24);
-    }
+@each $color, $col1, $col2, $col3, $col4, $col5, $col6, $col7,
+  $col8
+    in (
+      'Rosewater' #f5e0dc #fceeec #e1c8c3 #f8eae7 #d3a197 245 224 220,
+      'Flamingo' #f2cdcd #f2e1e1 #ddb7b7 #f7dfdf #cf9898 242 205 205,
+      'Pink' #f5c2e7 #f3d2ea #dca3cd #f4dbed #d28fc0 245 194 231,
+      'Mauve' #cba6f7 #d4b7f8 #b38fdf #d6b9f9 #a171da 203 166 247,
+      'Red' #f38ba8 #f0a4b9 #de7693 #f5a3ba #d56c89 243 139 168,
+      'Maroon' #eba0ac #eabbc3 #d68895 #f0b7c0 #c86a79 235 160 172,
+      'Peach' #fab387 #f7c7a9 #e1996d #fbc4a2 #d78a5b 250 179 135,
+      'Yellow' #f9e2af #feeecd #dec48d #fbeccb #d5b05d 249 226 175,
+      'Green' #a6e3a1 #bfebbb #86c780 #bceab8 #6ed166 166 227 161,
+      'Teal' #94e2d5 #aceae0 #6fc5b7 #afe9df #5cccb9 148 226 213,
+      'Sky' #89dceb #a3e4f0 #68bcca #9fe3ef #64c2d3 137 220 235,
+      'Sapphire' #74c7ec #93d1ed #59a9cf #93d4f0 #6ab6d7 116 199 236,
+      'Blue' #89b4fa #a6c8ff #6593df #a7c7fb #739cdd 137 220 235,
+      'Lavender' #b4befe #c9d0ff #8d98e4 #d2d8fe #96a1e9 180 190 254
+    )
+{
+  .secCatppuccinMocha#{$color} {
+    --accent-color: #{$col1};
+    --accent-hover-color: #{$col2};
+    --accent-active-color: #{$col3};
+    --accent-light-color: #{$col4};
+    --accent-visited-color: #{$col5};
+    --accent-color-opacity1: rgba(#{$col6}, #{$col7}, #{$col8}, 0.04);
+    --accent-color-opacity2: rgba(#{$col6}, #{$col7}, #{$col8}, 0.12);
+    --accent-color-opacity3: rgba(#{$col6}, #{$col7}, #{$col8}, 0.16);
+    --accent-color-opacity4: rgba(#{$col6}, #{$col7}, #{$col8}, 0.24);
+  }
 }
 
-body[dir='ltr']{
-    --ltr-or-rtl: ltr;
-    --float-left-ltr-rtl-value: left;
-    --float-right-ltr-rtl-value: right;
-    --horizontal-directionality-coefficient: 1;
+body[dir='ltr'] {
+  --ltr-or-rtl: ltr;
+  --float-left-ltr-rtl-value: left;
+  --float-right-ltr-rtl-value: right;
+  --horizontal-directionality-coefficient: 1;
 }
 
-body[dir='rtl']{
-    --ltr-or-rtl: rtl;
-    --float-left-ltr-rtl-value: right;
-    --float-right-ltr-rtl-value: left;
-    --horizontal-directionality-coefficient: -1;
+body[dir='rtl'] {
+  --ltr-or-rtl: rtl;
+  --float-left-ltr-rtl-value: right;
+  --float-right-ltr-rtl-value: left;
+  --horizontal-directionality-coefficient: -1;
 }
 
-body[dir='rtl'] [data-prefix='fas']:not([data-icon='magnifying-glass']):not([data-icon='circle-question']){
-    transform: scale(-1,1);
+body[dir='rtl']
+  [data-prefix='fas']:not([data-icon='magnifying-glass']):not([data-icon='circle-question']) {
+  transform: scale(-1, 1);
 }
 
 /* Arabic, Urdu, Persian and Kurdish have reversed question mark */
 htm[lang='ar'] [data-prefix='fas'][data-icon='circle-question'],
 htm[lang='ur'] [data-prefix='fas'][data-icon='circle-question'],
 htm[lang='fa'] [data-prefix='fas'][data-icon='circle-question'],
-htm[lang='ku'] [data-prefix='fas'][data-icon='circle-question']{
-    transform: scale(-1,1);
+htm[lang='ku'] [data-prefix='fas'][data-icon='circle-question'] {
+  transform: scale(-1, 1);
 }
 
-body{
-    margin: 0;
-    min-block-size: 100vh;
-    color: var(--primary-text-color);
-    background-color: var(--bg-color);
-    --red-500: #f44336;
+body {
+  margin: 0;
+  min-block-size: 100vh;
+  color: var(--primary-text-color);
+  background-color: var(--bg-color);
+  --red-500: #f44336;
 }
 
-#app{
-    color: var(--primary-text-color);
-    background-color: var(--bg-color);
+#app {
+  color: var(--primary-text-color);
+  background-color: var(--bg-color);
 }
 
-.hideOutlines *:focus{
-    outline: none;
+.hideOutlines *:focus {
+  outline: none;
 }
 
-a:link{
-    color: var(--link-color);
+a:link {
+  color: var(--link-color);
 }
 
-a:visited{
-    color: var(--link-visited-color);
+a:visited {
+  color: var(--link-visited-color);
 }
 
-::-webkit-scrollbar{
-    inline-size: 6px;
-    block-size: 6px;
+::-webkit-scrollbar {
+  inline-size: 6px;
+  block-size: 6px;
 }
 
-::-webkit-scrollbar-thumb{
-    background: var(--scrollbar-color);
-    border-radius: 6px;
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 6px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background-color: var(--scrollbar-hover-color);
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover-color);
 }
