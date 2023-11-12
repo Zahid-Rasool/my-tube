@@ -376,20 +376,20 @@ $sel: selector.append('.secCatppuccinMocha',#{$colorList5});
 @include colors2($sel, #1e1e2e);
 
 @each $color, $col1, $col2, $col3, $col4, $col5, $col6, $col7, $col8 in (
-    'Rosewater' #f5e0dc #fceeec #e1c8c3,
-    'Flamingo' #f2cdcd #f2e1e1 #ddb7b7,
-    'Pink' #f5c2e7 #f3d2ea #dca3cd,
-    'Mauve' #cba6f7 #d4b7f8 #b38fdf,
-    'Red' #f38ba8 #f0a4b9 #de7693,
-    'Maroon' #eba0ac #eabbc3 #d68895,
-    'Peach' #fab387 #f7c7a9 #e1996d,
-    'Yellow' #f9e2af #feeecd #dec48d,
-    'Green' #a6e3a1 #bfebbb #86c780,
-    'Teal' #94e2d5 #aceae0 #6fc5b7,
-    'Sky' #89dceb #a3e4f0 #68bcca,
-    'Sapphire' #74c7ec #93d1ed #59a9cf,
-    'Blue' #89b4fa #a6c8ff #6593df,
-    'Lavender' #b4befe #c9d0ff #8d98e4
+    'Rosewater' #f5e0dc #fceeec #e1c8c3 #f8eae7 #d3a197 245 224 220,
+    'Flamingo' #f2cdcd #f2e1e1 #ddb7b7 #f7dfdf #cf9898 242 205 205,
+    'Pink' #f5c2e7 #f3d2ea #dca3cd #f4dbed #d28fc0 245 194 231,
+    'Mauve' #cba6f7 #d4b7f8 #b38fdf #d6b9f9 #a171da 203 166 247,
+    'Red' #f38ba8 #f0a4b9 #de7693 #f5a3ba #d56c89 243 139 168,
+    'Maroon' #eba0ac #eabbc3 #d68895 #f0b7c0 #c86a79 235 160 172,
+    'Peach' #fab387 #f7c7a9 #e1996d #fbc4a2 #d78a5b 250 179 135,
+    'Yellow' #f9e2af #feeecd #dec48d #fbeccb #d5b05d 249 226 175,
+    'Green' #a6e3a1 #bfebbb #86c780 #bceab8 #6ed166 166 227 161,
+    'Teal' #94e2d5 #aceae0 #6fc5b7 #afe9df #5cccb9 148 226 213,
+    'Sky' #89dceb #a3e4f0 #68bcca #9fe3ef #64c2d3 137 220 235,
+    'Sapphire' #74c7ec #93d1ed #59a9cf #93d4f0 #6ab6d7 116 199 236,
+    'Blue' #89b4fa #a6c8ff #6593df #a7c7fb #739cdd 137 220 235,
+    'Lavender' #b4befe #c9d0ff #8d98e4 #d2d8fe #96a1e9 180 190 254
 ){
     .secCatppuccinMocha#{$color}{
         --accent-color: #{$col1};
@@ -402,4 +402,69 @@ $sel: selector.append('.secCatppuccinMocha',#{$colorList5});
         --accent-color-opacity3: rgba(#{$col6},#{$col7},#{$col8},0.16);
         --accent-color-opacity4: rgba(#{$col6},#{$col7},#{$col8},0.24);
     }
+}
+
+body[dir='ltr']{
+    --ltr-or-rtl: ltr;
+    --float-left-ltr-rtl-value: left;
+    --float-right-ltr-rtl-value: right;
+    --horizontal-directionality-coefficient: 1;
+}
+
+body[dir='rtl']{
+    --ltr-or-rtl: rtl;
+    --float-left-ltr-rtl-value: right;
+    --float-right-ltr-rtl-value: left;
+    --horizontal-directionality-coefficient: -1;
+}
+
+body[dir='rtl'] [data-prefix='fas']:not([data-icon='magnifying-glass']):not([data-icon='circle-question']){
+    transform: scale(-1,1);
+}
+
+/* Arabic, Urdu, Persian and Kurdish have reversed question mark */
+htm[lang='ar'] [data-prefix='fas'][data-icon='circle-question'],
+htm[lang='ur'] [data-prefix='fas'][data-icon='circle-question'],
+htm[lang='fa'] [data-prefix='fas'][data-icon='circle-question'],
+htm[lang='ku'] [data-prefix='fas'][data-icon='circle-question']{
+    transform: scale(-1,1);
+}
+
+body{
+    margin: 0;
+    min-block-size: 100vh;
+    color: var(--primary-text-color);
+    background-color: var(--bg-color);
+    --red-500: #f44336;
+}
+
+#app{
+    color: var(--primary-text-color);
+    background-color: var(--bg-color);
+}
+
+.hideOutlines *:focus{
+    outline: none;
+}
+
+a:link{
+    color: var(--link-color);
+}
+
+a:visited{
+    color: var(--link-visited-color);
+}
+
+::-webkit-scrollbar{
+    inline-size: 6px;
+    block-size: 6px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--scrollbar-color);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--scrollbar-hover-color);
 }
