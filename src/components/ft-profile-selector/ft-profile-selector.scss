@@ -1,0 +1,86 @@
+.colorOption {
+  inline-size: 40px;
+  block-size: 40px;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  :hover {
+    box-shadow: 0 0 0 2px var(--side-nav-hover-color);
+  }
+}
+
+.initial {
+  font-size: 20px;
+  line-height: 1em;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.profileList {
+  display: inline;
+  position: absolute;
+  inset-block-start: 60px;
+  inset-inline-end: 10px;
+  min-inline-size: 250px;
+  block-size: 400px;
+  padding: 5px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 0 4px var(--scrollbar-color-hover);
+}
+
+.profileWrapper {
+  margin-block-start: 60px;
+  block-size: 340px;
+  overflow-y: auto;
+}
+
+@mixin trans($prefix, $timing) {
+  #{$prefix}transition: background 0.2s $timing;
+}
+
+.profile {
+  cursor: pointer;
+  block-size: 50px;
+  @include trans(-webkit-, ease-out);
+  @include trans(-moz-, ease-out);
+  @include trans(-o-, ease-out);
+  @include trans('', ease-out);
+  :hover {
+    background-color: var(--side-nav-hover-color);
+    color: var(--side-nav-hover-text-color);
+    @include trans(-webkit-, ease-in);
+    @include trans(-moz-, ease-in);
+    @include trans(-o-, ease-in);
+    @include trans('', ease-in);
+  }
+  & .colorOption {
+    float: var(--float-left-ltr-rtl-value);
+    position: relative;
+    inset-block-end: 5px;
+    margin: 10px;
+  }
+}
+
+.profileName {
+  display: flex;
+  align-items: center;
+  block-size: 50px;
+  padding-inline-end: 10px;
+}
+
+.profileListTitle {
+  position: absolute;
+  margin: 0;
+  inset-inline-start: 10px;
+}
+
+.profileSettings {
+  float: var(--float-right-ltr-rtl-value);
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-end: 5px;
+}

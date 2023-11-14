@@ -22,7 +22,7 @@
       <font-awesome-icon
         :aria-disabled="isArrowForwardDisabled"
         class="navIcon"
-        :class="{ arrowForwardDisabled: isArrowBackwardDisabled }"
+        :class="{ arrowForwardDisabled: isArrowFarwardDisabled }"
         :icon="['fas', 'arrow-right']"
         role="button"
         tabindex="0"
