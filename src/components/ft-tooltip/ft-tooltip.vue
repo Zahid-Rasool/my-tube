@@ -10,4 +10,4 @@
 </template>
 
 <script src="./ft-tooltip.ts" />
-<style lang="scss" src="./ft-tooltip.scss" />
+<style scoped lang="scss" src="./ft-tooltip.scss" />
