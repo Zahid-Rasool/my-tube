@@ -1,19 +1,19 @@
-.ft-input-component{
-    position: relative;
+.ft-input-component {
+  position: relative;
 }
 
-body[dir='rtl'] .ft-input-component.search.showClearTextButton .inputAction{
-    inset-inline-end: -30px;
+body[dir='rtl'] .ft-input-component.search.showClearTextButton .inputAction {
+  inset-inline-end: -30px;
 }
 
 body[dir='rtl'] .ft-input-component.search.clearTextButtonVisible .inputAction,
-    body[dir='rtl'] .ft-input-component.search.showClearTextButton:focus-within .inputAction{
-        inset-inline-end: 0;
+body[dir='rtl'] .ft-input-component.search.showClearTextButton:focus-within .inputAction {
+  inset-inline-end: 0;
 }
 
 .ft-input-component.search.showClearTextButton {
-    padding-inline-start: 30px;
-  }
+  padding-inline-start: 30px;
+}
 
 .ft-input-component.search.clearTextButtonVisible,
 .ft-input-component.search.showClearTextButton:focus-within {
@@ -21,10 +21,10 @@ body[dir='rtl'] .ft-input-component.search.clearTextButtonVisible .inputAction,
 }
 
 .ft-input-component.showClearTextButton:not(.search) .ft-input {
-    padding-inline-start: 46px;
-  }
+  padding-inline-start: 46px;
+}
 
-  /* Main search input */
+/* Main search input */
 .clearTextButtonVisible.search .ft-input,
 .ft-input-component.search.showClearTextButton:focus-within .ft-input {
   padding-inline-start: 46px;
@@ -40,24 +40,172 @@ body[dir='rtl'] .ft-input-component.search.clearTextButtonVisible .inputAction,
   opacity: 1;
 }
 
-.disabled label, .disabled .ft-input{
-    opacity: 0.4;
-    cursor: not-allowed;
- }
+.disabled label,
+.disabled .ft-input {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
-  .clearInputTextButton {
-    position: absolute;
-    inset-block-start: 5px;
-    inset-inline-start: 0;
-    /* To be higher than `.inputWrapper` */
-    z-index: 1;
-    margin-block: 0;
-    margin-inline: 3px;
-    padding: 10px;
-    border-radius: 100%;
-    color: var(--primary-text-color);
-    opacity: 0;
-    -moz-transition: background 0.2s ease-in;
-    -o-transition: background 0.2s ease-in;
-    transition: background 0.2s ease-in;
+@mixin trans {
+  -moz-transition: background 0.2s ease-in;
+  -o-transition: background 0.2s ease-in;
+  transition: background 0.2s ease-in;
+}
+.clearInputTextButton {
+  position: absolute;
+  inset-block-start: 5px;
+  inset-inline-start: 0;
+  /* To be higher than `.inputWrapper` */
+  z-index: 1;
+  margin-block: 0;
+  margin-inline: 3px;
+  padding: 10px;
+  border-radius: 100%;
+  color: var(--primary-text-color);
+  opacity: 0;
+  @include trans;
+}
+
+.clearInputTextButton.visible:hover {
+  background-color: var(--side-nav-hover-color);
+  color: var(--side-nav-hover-text-color);
+}
+
+.forceTextColor .clearInputTextButton:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.clearInputTextButton.visible:active {
+  background-color: var(--tertiary-text-color);
+  color: var(--side-nav-active-text-color);
+  @include trans;
+}
+
+.search .clearInputTextButton {
+  inset-block-start: 12px;
+}
+
+.forceTextColor .clearInputTextButton {
+  color: #eee;
+}
+
+.forceTextColor .clearInputTextButton:active {
+  background-color: var(--primary-active-color);
+}
+
+.ft-input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  inline-size: 100%;
+  padding: 1rem;
+  border: none;
+  margin-block-end: 10px;
+  font-size: 16px;
+  block-size: 45px;
+  color: var(--secondary-text-color);
+  border-radius: 5px;
+  background-color: var(--search-bar-color);
+}
+
+.ft-input-component ::-webkit-input-placeholder {
+  color: var(--tertiary-text-color);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.forceTextColor .ft-input {
+  color: #eee;
+  background-color: var(--primary-input-color);
+}
+
+.forceTextColor .ft-input:focus {
+  box-shadow: 0 0 1rem 0 var(--primary-input-color);
+  -moz-transition: box-shadow 0.2s ease-in-out;
+  -o-transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.forceTextColor ::-webkit-input-placeholder {
+  color: #eee;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputAction {
+  position: absolute;
+  margin-block: 0;
+  margin-inline: 3px;
+  padding: 10px;
+  inset-block-start: -8px;
+  inset-inline-end: 0;
+  border-radius: 100%;
+  color: var(--primary-text-color);
+  opacity: 50%;
+}
+
+.inputAction.enabled {
+  opacity: 100%;
+  cursor: pointer;
+}
+
+.search ::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.forceTextColor .inputAction {
+  color: #eee;
+}
+
+.ft-input-component.showActionButton .ft-input {
+  padding-inline-end: calc(36px + 6px);
+}
+
+.inputAction.enabled:hover {
+  background-color: var(--side-nav-hover-color);
+  color: var(--side-nav-hover-text-color);
+  @include trans;
+}
+
+.forceTextColor .inputAction.enabled:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.inputAction.enabled:active {
+  background-color: var(--tertiary-text-color);
+  color: var(--side-nav-active-text-color);
+  @include trans;
+}
+
+.forceTextColor .inputAction.enabled:active {
+  background-color: var(--primary-active-color);
+}
+
+.list {
+  position: absolute;
+  inline-size: 100%;
+  list-style: none;
+  margin: 0;
+  padding-block: 5px;
+  padding-inline: 0;
+  z-index: 10;
+  border-radius: 0 0 5px 5px;
+  word-wrap: break-word;
+  box-shadow: 0 0 10px var(--scrollbar-hover-color);
+  background-color: var(--search-bar-color);
+
+  & li {
+    display: block;
+    padding-block: 0;
+    padding-inline: 15px;
+    line-height: 2rem;
   }
+}
+
+.hover {
+  background-color: var(--scrollbar-hover-color);
+  color: var(--scrollbar-text-hover-color);
+}

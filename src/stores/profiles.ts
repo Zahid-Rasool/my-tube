@@ -34,7 +34,7 @@ export const useProfileStore = defineStore('profiles', {
     },
 
     profilebyId(state) {
-      ;(id) => {
+      (id) => {
         const profile = state.profileList.find((p) => p._id === id)
         return profile
       }
